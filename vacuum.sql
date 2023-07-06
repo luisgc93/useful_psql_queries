@@ -1,3 +1,4 @@
+/* General vacuum stats*/
 SELECT
   schemaname,
   relname,
@@ -8,3 +9,6 @@ SELECT
 FROM pg_stat_all_tables
 ORDER BY n_dead_tup DESC, last_autovacuum ASC
 LIMIT 100;
+
+/* Vacuum settings for a specific table */
+SELECT relname, reloptions FROM pg_class WHERE relname='table_name';
