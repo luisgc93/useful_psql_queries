@@ -1,3 +1,12 @@
+/*index stats*/
+select * from pg_catalog.pg_stat_all_indexes
+where relname = 'table_name';  
+
+/*index IO stats*/
+select * from pg_catalog.pg_statio_all_indexes
+where relname = 'table_name';  
+
+/*index size*/
 SELECT
   c.relname AS index_name,
   pg_size_pretty(pg_relation_size(c.oid)) AS index_size
