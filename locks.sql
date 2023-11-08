@@ -1,7 +1,5 @@
-SELECT relname
-FROM pg_class
-WHERE oid in (pid1, pid2...);
 
+/* Fetch all locks for a table and some stats  */
 SELECT 
 pg_locks.pid, pg_stat_activity.application_name, pg_locks.mode, pg_class.relname, 
 pg_stat_activity.state, now() - pg_stat_activity.query_start AS time, pg_locks.granted, pg_stat_activity.query
