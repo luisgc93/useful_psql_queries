@@ -6,6 +6,6 @@ pg_stat_activity.state, now() - pg_stat_activity.query_start AS time, pg_locks.g
 FROM pg_locks
 JOIN pg_class ON pg_locks.relation = pg_class.oid
 JOIN pg_stat_activity ON pg_stat_activity.pid = pg_locks.pid
-WHERE pg_class.relname = 'network'
+WHERE pg_class.relname = 'table_name'
 AND query NOT IN ('ROLLBACK;', 'ROLLBACK', 'COMMIT', 'SELECT')
 ORDER BY granted ASC;
