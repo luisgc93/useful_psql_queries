@@ -2,6 +2,14 @@
 select * from pg_catalog.pg_stat_all_indexes
 where relname = 'table_name';  
 
+/*index types*/
+SELECT tab.relname, cls.relname, am.amname
+FROM pg_index idx 
+JOIN pg_class cls ON cls.oid=idx.indexrelid
+JOIN pg_class tab ON tab.oid=idx.indrelid
+JOIN pg_am am ON am.oid=cls.relam
+order by tab.relname desc;
+
 /*index IO stats*/
 select * from pg_catalog.pg_statio_all_indexes
 where relname = 'table_name';  
